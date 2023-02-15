@@ -1,0 +1,4 @@
+foreach ($course as $key => $value) {
+                $insert_course="INSERT INTO st_course_batch(student_id,class_id,section_id) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]')";
+                             
+                             }  
