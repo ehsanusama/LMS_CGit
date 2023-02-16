@@ -69,99 +69,79 @@
 			<a href="#qr-modal" data-toggle="modal" title="check_in|<?= @$fetchUser['student_id'] ?>" class="qr-modal-btn">
 				<div class="card">
 					<div class="card-body">
-						<span class="dash-widget-icon text-success">
-							<i class="fe fe-credit-card"></i>
+						<span class="dash-widget-icon text-danger">
+							<i class="fa fa-qrcode" aria-hidden="true"></i>
 						</span>
 						<div class="dash-widget-info">
 							<h6 class="text-muted">
-								<h6 class="text-success">Scan Card</h6>
+								<h6 class="text-danger">Scan Card</h6>
 							</h6>
 							<div class="progress progress-sm">
 								<div class="progress-bar bg-danger w-50"></div>
 							</div>
 
 						</div>
+					</div>
+				</div>
 			</a>
 		</div>
 	</div>
-</div>
-<div class="col-xl-3 col-sm-6 col-12">
-	<div class="card">
-		<div class="card-body">
-			<div class="dash-widget-header">
-				<span class="dash-widget-icon text-warning border-warning">
-					<i class="fe fe-folder"></i>
-				</span>
-				<div class="dash-count">
-					<h3>3</h3>
+
+
+	<div class="row">
+		<div class="col-md-6 d-flex">
+
+			<!-- Batch List -->
+			<div class="card card-table flex-fill">
+				<div class="card-header">
+					<h4 class="card-title">Assigned Study Groups</h4>
 				</div>
-			</div>
-			<div class="dash-widget-info">
-
-				<h6 class="text-muted">Courses</h6>
-				<div class="progress progress-sm">
-					<div class="progress-bar bg-warning w-50"></div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-</div>
-
-<div class="row">
-	<div class="col-md-6 d-flex">
-
-		<!-- Batch List -->
-		<div class="card card-table flex-fill">
-			<div class="card-header">
-				<h4 class="card-title">Assigned Study Groups</h4>
-			</div>
-			<div class="card-body">
-				<div class="table-responsive">
-					<table class="table table-hover table-center mb-0">
-						<thead>
-							<tr>
-								<th>Study Group Name</th>
-								<th> Course</th>
-								<th>Batch</th>
-								<th>Teacher</th>
-							</tr>
-						</thead>
-						<tbody>
-							<?php
-
-
-							$email = $_SESSION['email'];
-							// echo $email;
-							$id =  $_SESSION['id'];
-							$sql = "SELECT * FROM study_group INNER JOIN teacher ON study_group.teacher_id = teacher.teacher_id  WHERE study_group.teacher_id ='$id' ";
-
-							$qrun = mysqli_query($conn, $sql);
-							while ($data = mysqli_fetch_array($qrun)) { 	?>
+				<div class="card-body">
+					<div class="table-responsive">
+						<table class="table table-hover table-center mb-0">
+							<thead>
 								<tr>
-
-									<td><?= $data['study_group_name']; ?></td>
-									<td><?= $data['class_id']; ?></td>
-									<td><?= $data['section_id']; ?></td>
-									<td><?= $data['teacher_fname']; ?> <?= $data['teacher_lname']; ?></td>
-
+									<th>Study Group Name</th>
+									<th> Course</th>
+									<th>Batch</th>
+									<th>Teacher</th>
 								</tr>
-							<?php } ?>
+							</thead>
+							<tbody>
+								<?php
 
 
-						</tbody>
-					</table>
+								$email = $_SESSION['email'];
+								// echo $email;
+								$id =  $_SESSION['id'];
+								$sql = "SELECT * FROM study_group INNER JOIN teacher ON study_group.teacher_id = teacher.teacher_id  WHERE study_group.teacher_id ='$id' ";
+
+								$qrun = mysqli_query($conn, $sql);
+								while ($data = mysqli_fetch_array($qrun)) { 	?>
+									<tr>
+
+										<td><?= $data['study_group_name']; ?></td>
+										<td><?= $data['class_id']; ?></td>
+										<td><?= $data['section_id']; ?></td>
+										<td><?= $data['teacher_fname']; ?> <?= $data['teacher_lname']; ?></td>
+
+									</tr>
+								<?php } ?>
+
+
+							</tbody>
+						</table>
+					</div>
 				</div>
 			</div>
+			<!-- /Recent Orders -->
+
 		</div>
-		<!-- /Recent Orders -->
 
 	</div>
+	<!-- /Recent Orders -->
 
-</div>
-<!-- /Recent Orders -->
-</div>
-</div>
+
 </div>
 
 <div class="modal fade" id="qr-modal">

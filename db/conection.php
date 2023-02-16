@@ -1,4 +1,6 @@
-<?php include_once("functions.php"); ?>
+<?php include_once("functions.php");
+date_default_timezone_set("Indian/Maldives");
+?>
 
 <?php
 $servername   = "localhost";

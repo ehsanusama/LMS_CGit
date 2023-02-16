@@ -56,7 +56,7 @@ if (isset($_SESSION['email']) && $_SESSION['login_user'] == 'teacher') { ?>
 		<script>
 			$(document).on('click', '.qr-modal-btn', function() {
 				var title = $(this).attr('title').split('|');
-				console.log(title)
+				console.log(title);
 				$("#qr-modal-body").html('<iframe src="scan.php?shift=' + title[0] +
 					'&student_id=' + title[1] + '" width="100%" style="min-height: 400px" frameborder="0"></iframe>')
 				return false;
