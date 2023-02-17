@@ -47,10 +47,11 @@
 									//echo $sql;
 
 									$qrun = mysqli_query($conn, $sql);
-									while ($data = mysqli_fetch_assoc($qrun)){ 
-
-										$marks = mysqli_fetch_assoc (mysqli_query($conn, "SELECT marks as marks FROM assignment WHERE assignment_id = 6 AND student_id = ''"))
-										?>
+									while ($data = mysqli_fetch_assoc($qrun)) {
+										$assignmentid = $data['upload_lecture_id'];
+										$stdid  = $_SESSION['id'];
+										$marks = mysqli_fetch_assoc(mysqli_query($conn, "SELECT marks as marks FROM assignment WHERE assignment_id = '$assignmentid' AND student_id = '$stdid'"))
+								?>
 										<tr>
 											<td><?= $data['upload_lecture_id']; ?></td>
 											<td><?= $data['upload_lecture_title']; ?></td>
