@@ -22,6 +22,8 @@
 
 <script src="includes/script.js"></script>
 
+
+
 <script>
 	$(document).on('submit', '.fee_form', function() {
 		var form = $(this);
